@@ -1,25 +1,43 @@
 {
-    "books": [
-        {
-            "id": "book1",
-            "title": "Java Essentials",
-            "genre": "Programming",
-            "isbn": "978-0141439518",
-            "format": "paper",
-            "summary": "This book covers all important aspects of Java programming. It is highly recommended by experienced SWE",
-            "authors": [
-                "author1"
-            ]
-        }
-    ],
-    "authors": [
-        {
-            "id": "author1",
-            "firstname": "abc",
-            "lastname": "efg",
-            "phone": "641-123-5678",
-            "email": "abc@miu.edu",
-            "address": "Fairfield, IA, 52556"
-        }
-    ]
+  "books": [
+    {
+      "id": "book1",
+      "title": "Java Essentials",
+      "genre": "Programming",
+      "isbn": "978-0141439518",
+      "format": "paper",
+      "summary": "This book covers all important aspects of Java programming. It is highly recommended by experienced SWE",
+      "authors": [
+        "author1"
+      ]
+    },
+    {
+      "id": "author2",
+      "title": "javascript",
+      "genre": "programming",
+      "isbn": "147-2552-5565",
+      "format": "paper",
+      "summary": "learning javascript",
+      "authors": []
+    },
+    {
+      "id": "book3",
+      "title": "Typescript",
+      "genre": "programming Language",
+      "isbn": "410-2540551",
+      "format": "paper",
+      "summary": "Most uses language",
+      "authors": []
+    }
+  ],
+  "authors": [
+    {
+      "id": "author1",
+      "firstname": "abc",
+      "lastname": "efg",
+      "phone": "641-123-5678",
+      "email": "abc@miu.edu",
+      "address": "Fairfield, IA, 52556"
+    }
+  ]
 }
