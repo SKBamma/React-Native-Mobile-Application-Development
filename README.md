@@ -1,4 +1,4 @@
-Library Management System:
+**Library Management System:**
 
 Requirements
 You are employed to develop an Integrated Library Management System (ILMS). This system contains all books and author profiles of this library.
@@ -23,7 +23,7 @@ Book {
   "summary": "This book covers all important aspects of Java programming. It is highly recommended by experienced SWE",
   "authors": ["author1"]
 }
-Create the React application to have the following features.
+**Create the React application to have the following features.**
 Add a new book
 Display all books
 Add an author
