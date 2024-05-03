@@ -38,6 +38,30 @@
       "phone": "641-123-5678",
       "email": "abc@miu.edu",
       "address": "Fairfield, IA, 52556"
+    },
+    {
+      "id": "author2",
+      "firstname": "Suresh",
+      "lastname": "Bamma",
+      "phone": "210-2452-3232",
+      "email": "sk@gmaril.com",
+      "address": "200 villa street fairfirld Ia"
+    },
+    {
+      "id": "author 3",
+      "firstname": "Ritu",
+      "lastname": "Bamma",
+      "phone": "125-321-2545",
+      "email": "rb@gmail.com",
+      "address": "1452 Kalika Street, Fairfirld Ia, 52556"
+    },
+    {
+      "id": "author 4",
+      "firstname": "Ritu3",
+      "lastname": "Bamma3",
+      "phone": "125-321-25453",
+      "email": "r3b@gmail.com",
+      "address": "14523 Kalika Street, Fairfirld Ia, 52556"
     }
   ]
 }

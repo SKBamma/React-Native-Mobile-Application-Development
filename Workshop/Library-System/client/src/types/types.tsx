@@ -8,3 +8,12 @@ export type Book = {
     authors?: string[];
 
 };
+
+export type Author = {
+    id: string,
+    firstname: string,
+    lastname: string,
+    phone: string,
+    email: string,
+    address: string;
+};
