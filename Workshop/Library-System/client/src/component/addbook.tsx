@@ -2,11 +2,12 @@ import React, { ChangeEvent, useContext, useState } from 'react';
 import { Book } from '../types/types';
 import { postBook } from '../apis/services/book.author.services';
 import { GlobalContext } from './context';
+import { useNavigate } from 'react-router-dom';
 
 export default function Addbook() {
     const [book, setBook] = useState<Book>(
         { id: '', title: '', genre: '', isbn: '', format: 'paper', summary: '', authors: [] });
-
+    const navigate = useNavigate();
     const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setBook({ ...book, [name]: value });
@@ -21,6 +22,7 @@ export default function Addbook() {
         } catch (error) {
             console.log("Error adding books to db!!");
         }
+        navigate('/');
 
     };
     return (

@@ -1,8 +1,20 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from './context';
+import { useNavigate } from 'react-router-dom';
+import Authoor from './author';
 
 export default function Authorlist() {
     const { authors } = useContext(GlobalContext);
+    const navigate = useNavigate();
+
+    const navigateToAddAuthor = () => {
+        navigate('/add-auther');
+    };
+
+    const navigateToBooklist = () => {
+        navigate('/');
+    };
+
     return (
         <div style={{
             marginLeft: "20%", border: 2,
@@ -11,22 +23,18 @@ export default function Authorlist() {
             <h2>Available Author list</h2>
             <ol>
                 {
-                    authors.map((author) => (
-                        <li key={author.id}
-                            style={{
-                                border: 1, borderStyle: 'solid', borderColor: 'black', margin: 5,
-                                textAlign: 'center', marginRight: 150, background: 'whitesmoke'
-                            }}>
-                            <p>Email: {author.email}</p>
-                            <p>Firstname: {author.firstname}</p>
-                            <p>Lastname: {author.lastname}</p>
-                            <p>Address: {author.address}</p>
-                        </li>
+                    authors.map((author) => (<Authoor key={author.id} data={author} />
+
                     ))
                 }
             </ol>
+            <button type='button' style={{ padding: 10, marginLeft: -250 }}
+                className="btn btn-primary"
+                onClick={navigateToAddAuthor}>Add Author</button>
 
-
+            <button type='button' style={{ padding: 10, marginLeft: 250 }}
+                className="btn btn-primary"
+                onClick={navigateToBooklist}>Back 2 Booklist</button>
         </div>
     );
 }

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-
-import Addbook from "./component/addbook";
+import { useRoutes } from "react-router-dom";
 import { GlobalContext } from "./component/context";
 import { Author, Book } from "./types/types";
-import BookList from "./component/booklist";
 import { getAuthors, getBooks } from "./apis/services/book.author.services";
-import AddAuthor from "./component/addAuthors";
-import Authorlist from "./component/authorlist";
 
+import routes from '../src/routes/routes';
 
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
   const [authors, setAuthors] = useState<Author[]>([]);
+
+  const element = useRoutes(routes);
 
   const fetchBooks = async () => {
     try {
@@ -44,10 +43,11 @@ function App() {
     <div className="App">
       <h3>Library Management System</h3>
       <GlobalContext.Provider value={{ books, setBooks, authors, setAuthors }}>
-        <Addbook />
+        {/* <Addbook />
         <BookList />
         <AddAuthor />
-        <Authorlist />
+        <Authorlist /> */}
+        {element}
       </GlobalContext.Provider>
 
     </div>
