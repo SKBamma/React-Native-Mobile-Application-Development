@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Problem Solving",
+      "genre": "Programming",
+      "isbn": "978-0141439518",
+      "format": "paper",
+      "summary": "This book covers all fundamentals of programming"
+    },
+    {
+      "id": "",
+      "title": "",
+      "genre": "",
+      "isbn": "",
+      "format": "",
+      "summary": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "genre": "",
+      "isbn": "",
+      "format": "",
+      "summary": ""
+    },
+    {
+      "id": "434",
+      "title": "3435",
+      "genre": "4543",
+      "isbn": "45435",
+      "format": "4543",
+      "summary": "454354"
+    }
+  ]
+}
