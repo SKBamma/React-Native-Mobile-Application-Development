@@ -29,7 +29,7 @@ export default function Book({ data }: BProps) {
     };
 
     const nagivateToUpdateBook = () => {
-        navigate('/update-book');
+        navigate('/update-book', { state: data });
     };
     return (
         <div>
