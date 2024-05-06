@@ -1,0 +1,34 @@
+{
+  "authors": [
+    {
+      "id": "author1",
+      "firstname": "Thao",
+      "lastname": "Vu",
+      "phone": "641-123-5678",
+      "email": "thaovu@miu.edu",
+      "address": "Fairfield, IA, 52556"
+    }
+  ],
+  "books": [
+    {
+      "id": "book1",
+      "title": "Angular",
+      "genre": "Programming",
+      "isbn": "978-0141439518",
+      "format": "paper",
+      "summary": " It is highly recommended fron front-end framework by experienced SWE",
+      "authors": [
+        "author1"
+      ]
+    },
+    {
+      "id": "qq",
+      "title": "qqqnnn",
+      "genre": "qqqnnn",
+      "isbn": "qqqnnn",
+      "format": "paper",
+      "summary": "qqqnn",
+      "authors": []
+    }
+  ]
+}
