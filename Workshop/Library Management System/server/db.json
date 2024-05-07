@@ -2,17 +2,17 @@
   "authors": [
     {
       "id": "author1",
-      "firstname": "Thao",
-      "lastname": "Vu",
-      "phone": "641-123-5678",
-      "email": "thaovu@miu.edu",
+      "firstname": "wuresh",
+      "lastname": "Bamma",
+      "phone": "140256-921",
+      "email": "k@miu.edu",
       "address": "Fairfield, IA, 52556"
     }
   ],
   "books": [
     {
       "id": "book1",
-      "title": "Angular",
+      "title": "Angular.update",
       "genre": "Programming",
       "isbn": "978-0141439518",
       "format": "paper",
@@ -22,12 +22,12 @@
       ]
     },
     {
-      "id": "qq",
-      "title": "qqqnnn",
-      "genre": "qqqnnn",
-      "isbn": "qqqnnn",
+      "id": "dsfdf",
+      "title": "dfdf",
+      "genre": "fd",
+      "isbn": "fd",
       "format": "paper",
-      "summary": "qqqnn",
+      "summary": "dfvd",
       "authors": []
     }
   ]

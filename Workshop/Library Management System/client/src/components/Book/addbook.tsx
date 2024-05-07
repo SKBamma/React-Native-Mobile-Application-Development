@@ -25,7 +25,7 @@ export default function Addbook() {
         } catch (error) {
             console.log("Unable to add book!!");
         }
-        navigate('/');
+        navigate('/boolist');
     };
 
     return (

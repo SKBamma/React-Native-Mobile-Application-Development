@@ -7,3 +7,12 @@ export type IBook = {
     summary: string,
     authors?: string[];
 };
+
+export type IAuthor = {
+    id: string,
+    firstname: string,
+    lastname: string,
+    phone: string,
+    email: string,
+    address: string;
+};

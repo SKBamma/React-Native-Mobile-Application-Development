@@ -30,7 +30,7 @@ export function UpdateBook() {
         } catch (error) {
             alert("Unable to update!!");
         }
-        navigate('/');
+        navigate('/boolist');
     };
 
     return (
