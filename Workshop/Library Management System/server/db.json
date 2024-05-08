@@ -7,6 +7,14 @@
       "phone": "140256-921",
       "email": "k@miu.edu",
       "address": "Fairfield, IA, 52556"
+    },
+    {
+      "id": "dsfdsf",
+      "firstname": "dfdsf",
+      "lastname": "dfsds",
+      "phone": "fdfdf",
+      "email": "dfdf",
+      "address": "dfdsf"
     }
   ],
   "books": [
@@ -28,6 +36,15 @@
       "isbn": "fd",
       "format": "paper",
       "summary": "dfvd",
+      "authors": []
+    },
+    {
+      "id": "fff",
+      "title": "ff",
+      "genre": "ff",
+      "isbn": "ff",
+      "format": "paper",
+      "summary": "ff",
       "authors": []
     }
   ]
