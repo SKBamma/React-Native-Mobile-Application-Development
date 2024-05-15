@@ -4,17 +4,20 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Stars from './Stars';
-import ICourse from './ICourse';
+import { ICourse } from './ICourse';
 
-interface CourseProps{
+interface CourseProps {
   data: ICourse;
   index: number;
 }
 
 const Course = ({ data, index }: CourseProps) => {
   const { title, faculty, code, rating } = data;
+  const navigation = useNavigation();
 
-  const infoPressed = () => { };
+  const infoPressed = () => {
+    navigation.navigate('course-details', data);
+  };
 
   return (
     <View

@@ -7,6 +7,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: '#0066CC',
     fontWeight: '300',
+    alignItems: 'center'
   },
   ios: {
     paddingTop: 30,

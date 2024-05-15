@@ -1,11 +1,27 @@
 
 import {
+  Pressable,
   StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
+import Stars from './Stars';
 
 const AddReview = () => {
 
-  return (null);
+  return (
+    <View style={styles.container}>
+      <Text style={styles.headerText}>Add Review</Text>
+      <TextInput placeholder='Your name' style={styles.input} />
+      <Text style={styles.ratingText}>Your Rating</Text>
+      {/* <Stars /> */}
+      <TextInput placeholder='Write review..' multiline numberOfLines={6} style={styles.input} />
+      <Pressable style={styles.submitButton}>
+        <Text style={styles.submitButtonText}>Submit Review</Text>
+      </Pressable>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -29,7 +45,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 3,
+    borderRadius: 20,
     fontSize: 24
   },
   ratingText: {

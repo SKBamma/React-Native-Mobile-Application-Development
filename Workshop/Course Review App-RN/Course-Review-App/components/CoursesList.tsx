@@ -1,26 +1,40 @@
-import React from 'react';
-import { StyleSheet, Platform, SafeAreaView, View} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { StyleSheet, Platform, SafeAreaView, View, FlatList, Text, TextInput } from 'react-native';
 
 import Course from './Course';
-import Header from './Header.ios';
+import Header from './Header.web';
+import { ICourse } from './ICourse';
+import { GlobalContext } from '../context/context';
 
-const data = [
-    { title: 'Web Application Programming', faculty: 'Asaad Saad', code: 'CS472', rating: 4 },
-    { title: 'Modern Web Application', faculty: 'Asaad Saad', code: 'CS572', rating: 5 },
-    { title: 'Enterprise Architecture', faculty: 'Joe Bruen', code: 'CS557', rating: 4 },
-    { title: 'Algorithms', faculty: 'Clyde Ruby', code: 'CS421', rating: 5 },
-    { title: 'Object Oriented JavaScript', faculty: 'Keith Levi', code: 'CS372', rating: 3 },
-    { title: 'Big Data', faculty: 'Prem Nair', code: 'CS371', rating: 5 },
-    { title: 'Web Application Architecture', faculty: 'Rakesh Shrestha', code: 'CS377', rating: 5 },
-    { title: 'Big Data Analytics', faculty: 'Mrudula Mukadam', code: 'CS378', rating: 5 },
-];
+
+
 
 export default function CoursesList() {
+    const { data } = useContext(GlobalContext);
+
+    const [search, setSearch] = useState<string>('');
+    const [displayData, setDisplayData] = useState<ICourse[]>(data);
+
+    const onSearch = (text: string) => {
+        const arr = data.filter((dt) => dt.title.toLowerCase().includes(text.trim().toLowerCase()));
+        setDisplayData(arr);
+        setSearch(text);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
-            <View>
-                <Header />
-            </View >
+
+            <Header />
+            <Text style={styles.text}>Course Review</Text>
+            <TextInput placeholder='Search tittle..' style={styles.input}
+                value={search} onChangeText={onSearch} />
+
+            <FlatList
+                data={displayData}
+                renderItem={({ item, index }) => <Course index={index} data={item} />}
+                keyExtractor={(item: ICourse) => item.code}
+            />
+
         </SafeAreaView>
     );
 }
@@ -30,7 +44,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFFFFF',
         paddingTop: Platform.OS === 'android' ? 30 : 0,
-        paddingBottom: 200
+        paddingBottom: 30
+    },
+    text: {
+        margin: 20,
+        fontSize: 25,
+        color: 'blue',
+        textAlign: 'center'
     },
     input: {
         padding: 10,
