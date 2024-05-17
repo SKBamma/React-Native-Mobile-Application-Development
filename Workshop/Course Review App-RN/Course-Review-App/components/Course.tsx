@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Stars from './Stars';
 import { ICourse } from './ICourse';
+import axios from 'axios';
+import { GlobalContext } from '../context/context';
 
 interface CourseProps {
   data: ICourse;
@@ -14,10 +16,26 @@ interface CourseProps {
 const Course = ({ data, index }: CourseProps) => {
   const { title, faculty, code, rating } = data;
   const navigation = useNavigation();
-
+  const { state, setState } = useContext(GlobalContext);
   const infoPressed = () => {
     navigation.navigate('course-details', data);
   };
+
+  const ondelete = async () => {
+    try {
+      const deleted = await axios.delete(`http://localhost:9000/courses/${data.id}`);
+      console.log(deleted);
+      if (deleted.status === 200) {
+        let arr = state.filter((item) => item.id !== data.id);
+        console.log(arr);
+        setState(arr);
+        return window.alert("course deleted succefully!");
+      }
+    } catch (error) {
+      return window.alert("Unable to delete");
+    }
+  };
+
 
   return (
     <View
@@ -38,6 +56,20 @@ const Course = ({ data, index }: CourseProps) => {
             style={styles.button}
             underlayColor="#5398DC">
             <Text style={styles.buttonText}>Details</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            onPress={infoPressed}
+            style={styles.button}
+            underlayColor="#5398DC">
+            <Text style={styles.buttonText}>Edit</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            onPress={ondelete}
+            style={styles.button}
+            underlayColor="#5398DC">
+            <Text style={styles.buttonText}>Delete</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -81,6 +113,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 3,
     backgroundColor: '#fff',
+    margin: 10,
   },
   buttonText: {
     color: '#0066CC',

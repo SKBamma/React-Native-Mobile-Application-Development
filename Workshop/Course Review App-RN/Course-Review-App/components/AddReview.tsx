@@ -6,18 +6,74 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import Stars from './Stars';
 
-const AddReview = () => {
+import Starbutton from './starbutton';
+import { useContext, useState } from 'react';
+
+import { IReview } from './ICourse';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { LOCAL_STORAGE_KEY } from '../helper/constant';
+
+import { GlobalContext } from '../context/context';
+
+const AddReview = ({ navigation, route }: any) => {
+  const [selectedValue, setSelectedValue] = useState(0);
+  const { data, setData } = useContext(GlobalContext);
+  const [review, setReview] = useState<IReview>({ name: '', rating: 5, comment: '' });
+  const { code } = route.params;
+
+  const onSubmit = async () => {
+    console.log(code);
+    const index = data.findIndex(x => x.code === code);
+    if (index !== -1) {
+      const obj = { ...data[index] };
+
+      if (!obj.reviews) {
+        obj.reviews = [];
+      }
+
+      obj.reviews.push({ ...review, rating: selectedValue });
+
+      let sum = 0;
+      for (let i = 0; i < obj.reviews.length; i++) {
+        sum += obj.reviews[i].rating;
+      }
+      obj.rating = Math.ceil(sum / obj.reviews.length);
+      data[index] = obj;
+      // AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
+      setData([...data]);
+
+
+      navigation.navigate('course-details', obj);
+    }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Add Review</Text>
-      <TextInput placeholder='Your name' style={styles.input} />
+
+      <TextInput placeholder='Please enter Your name..'
+        style={styles.input} value={review.name}
+        onChangeText={(text: string) => setReview({ ...review, name: text })} />
+
       <Text style={styles.ratingText}>Your Rating</Text>
-      {/* <Stars /> */}
-      <TextInput placeholder='Write review..' multiline numberOfLines={6} style={styles.input} />
-      <Pressable style={styles.submitButton}>
+
+      <View style={styles.stars}>
+        {
+          [1, 2, 3, 4, 5].map((value: number) =>
+            <Starbutton key={value} value={value}
+              selectedValue={selectedValue}
+              setSelectedValue={setSelectedValue} />)
+        }
+      </View>
+
+      <TextInput placeholder='Please write your openion..'
+        multiline numberOfLines={4}
+        style={styles.input} value={review.comment}
+        onChangeText={(text: string) => setReview({ ...review, comment: text })} />
+
+      <Pressable style={styles.submitButton} onPress={onSubmit}>
         <Text style={styles.submitButtonText}>Submit Review</Text>
       </Pressable>
     </View>
@@ -45,8 +101,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 20,
-    fontSize: 24
+    borderRadius: 10,
+    fontSize: 24,
+
   },
   ratingText: {
     fontSize: 20,

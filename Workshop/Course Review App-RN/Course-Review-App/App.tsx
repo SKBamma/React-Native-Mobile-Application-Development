@@ -4,29 +4,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import About from './components/About';
 import Home from './components/Home';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ICourse } from './components/ICourse';
 import { GlobalContext } from './context/context';
+import axios from 'axios';
 
 const { Navigator, Screen } = createBottomTabNavigator();
-const datas = [
-  { title: 'Web Application Programming', faculty: 'Asaad Saad', code: 'CS472', rating: 4 },
-  { title: 'Modern Web Application', faculty: 'Asaad Saad', code: 'CS572', rating: 5 },
-  { title: 'Enterprise Architecture', faculty: 'Joe Bruen', code: 'CS557', rating: 4 },
-  { title: 'Algorithms', faculty: 'Clyde Ruby', code: 'CS421', rating: 5 },
-  { title: 'Object Oriented JavaScript', faculty: 'Keith Levi', code: 'CS372', rating: 3 },
-  { title: 'Big Data', faculty: 'Prem Nair', code: 'CS371', rating: 5 },
-  { title: 'Web Application Architecture', faculty: 'Rakesh Shrestha', code: 'CS377', rating: 5 },
-  { title: 'Big Data Analytics', faculty: 'Mrudula Mukadam', code: 'CS378', rating: 5 },
-];
 
 
 export default function App() {
-  const [data, setData] = useState<ICourse[]>(datas);
+  const [state, setState] = useState<ICourse[]>([]);
+
+  async function loadCourses() {
+    try {
+      const res = await axios.get("http://localhost:9000/courses");
+      console.log(res.data);
+      if (res.status === 200) {
+        setState(res.data);
+      }
+    } catch (error) {
+
+    }
+  }
+  useEffect(() => {
+    loadCourses();
+  }, []);
 
 
   return (
-    <GlobalContext.Provider value={{ data, setData }}>
+    <GlobalContext.Provider value={{ state, setState }}>
       <NavigationContainer>
         <Navigator>
 

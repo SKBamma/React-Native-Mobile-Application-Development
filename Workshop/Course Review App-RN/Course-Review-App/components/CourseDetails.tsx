@@ -1,5 +1,5 @@
 import React from 'react';
-
+// import { useNavigation } from "@react-navigation/native";
 import {
   Pressable,
   SafeAreaView,
@@ -9,16 +9,20 @@ import {
 } from 'react-native';
 import { ICourse } from './ICourse';
 import Stars from './Stars';
+import ReviewList from './reviewlist';
 
 type Props = {
   navigation: any,
   route: any;
 };
 const CourseDetails = ({ navigation, route }: Props) => {
-  const { title, faculty, code, rating } = route.params;
+  const { title, faculty, code, rating, reviews } = route.params;
+  // const navigation = useNavigation();
+
   const navigateToAddReview = () => {
-    navigation.navigate('add-review');
+    navigation.navigate('add-review', route.params);
   };
+
   return (
     <View style={styles.container}>
 
@@ -26,6 +30,9 @@ const CourseDetails = ({ navigation, route }: Props) => {
       <Text style={styles.info}>{code}</Text>
       <Text style={styles.info}>{faculty}</Text>
       <Stars rating={rating} />
+
+      {/* <ReviewList data={reviews} /> */}
+
       <Pressable style={styles.button} onPress={navigateToAddReview}>
         <Text style={styles.buttonText}>Add Review</Text>
       </Pressable>

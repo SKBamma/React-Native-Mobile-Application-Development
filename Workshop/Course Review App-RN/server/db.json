@@ -1,0 +1,19 @@
+{
+  "courses": [
+    {
+      "id": "EtStItx4bmoSjUXjkkIrB",
+      "title": "qq",
+      "faculty": "qq",
+      "code": "qq",
+      "rating": 5,
+      "reviews": []
+    }
+  ],
+  "users": [
+    {
+      "id": "U001",
+      "name": "Thao Vu",
+      "email": "suresh@miu.edu"
+    }
+  ]
+}
